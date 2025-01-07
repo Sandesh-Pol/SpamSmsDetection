@@ -98,7 +98,7 @@ The **Spam SMS Detection System** works by analyzing the input message and ident
 Feel free to reach out if you have any questions or suggestions!
 
 - **GitHub**: [Sandesh-Pol](https://github.com/Sandesh-Pol/SpamSmsDetection)
-- **Email**: your-sandeshpol268@gmail.com
+- **Email**: sandeshpol268@gmail.com
 
 ---
 
