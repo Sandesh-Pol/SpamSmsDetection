@@ -2,8 +2,6 @@
 
 Welcome to the **Spam SMS Detection System** project! This web-based application detects spam messages using a simple and intuitive user interface. Built using **Django**, this project aims to demonstrate how AI models can be integrated into web applications to solve real-world problems.
 
-![Spam SMS Detection UI](static/images/ui_preview.png)
-
 ---
 
 ## 🌟 Features
