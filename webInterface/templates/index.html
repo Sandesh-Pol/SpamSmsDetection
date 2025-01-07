@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spam SMS Detection System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url('{% static "images/bgimag.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .container {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+      .container h1 {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .container p {
+        color: #fff;
+        margin-bottom: 30px;
+      }
+      .container button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 50px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .container button:hover {
+        background-color: #f1f1f1;
+      }
+      #smsForm {
+        display: none;
+      }
+      .inputbox {
+        margin: 20px 0;
+        position: relative;
+      }
+      .inputbox textarea {
+        width: 50vw;
+        height: 150px;
+        padding: 15px;
+        border-radius: 15px;
+        border: 2px solid #fff;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        outline: none;
+        font-size: 1.2rem;
+      }
+      .inputbox textarea::placeholder {
+        color: #ccc;
+      }
+      .dialog-box {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .dialog-box p {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+      .dialog-box button {
+        padding: 10px 20px;
+        border: none;
+        background: #ff5252;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="landing">
+      <h1>Welcome to Spam SMS Detection System</h1>
+      <p>
+        An intelligent solution designed to identify and filter out unwanted
+        spam messages, ensuring your inbox stays clean and secure.
+      </p>
+      <button onclick="showForm()">Get Started</button>
+    </div>
+
+    <form id="smsForm" class="container animate__animated animate__fadeIn">
+      <h1>Enter Your Message</h1>
+      <div class="inputbox">
+        <textarea
+          name="sms_input"
+          required
+          placeholder="Enter the message to check for spam..."
+        ></textarea>
+      </div>
+      <button type="button" onclick="predictSpam()">Predict</button>
+    </form>
+
+    <div class="dialog-box animate__animated animate__zoomIn" id="dialogBox">
+      <p id="predictionResult"></p>
+      <button onclick="closeDialog()">Close</button>
+    </div>
+
+    <script>
+      function showForm() {
+        document.getElementById("landing").style.display = "none";
+        document.getElementById("smsForm").style.display = "block";
+      }
+
+      function predictSpam() {
+        const message = document.querySelector('[name="sms_input"]').value;
+        const resultBox = document.getElementById("dialogBox");
+        const resultText = document.getElementById("predictionResult");
+
+        // Dummy prediction logic for demonstration
+        if (
+          message.toLowerCase().includes("win") ||
+          message.toLowerCase().includes("prize")
+        ) {
+          resultText.innerText = "This message is detected as SPAM!";
+        } else {
+          resultText.innerText = "This message is NOT spam.";
+        }
+
+        resultBox.style.display = "block";
+      }
+
+      function closeDialog() {
+        document.getElementById("dialogBox").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
